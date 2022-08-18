@@ -3,7 +3,7 @@ import qs from "qs";
 
 async function fetchData(url: string, receiver: any, addition: object = {}) {
   const response = await axios({
-    method: "get",
+    method: Object.keys(addition).length ? 'post' : 'get' ,
     url: url,
     data: qs.stringify(addition),
   });

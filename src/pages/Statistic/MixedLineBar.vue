@@ -5,24 +5,16 @@
 <script setup lang="ts">
 import * as echarts from "echarts";
 import { onMounted } from "vue";
+import { Summary } from "../../types";
 
-// Attention: Don't using interface directly here
 const props = defineProps<{
-    data: {
-        date: string;
-        data: {
-            category: string;
-            succeed: number;
-            total: number;
-            succeedRate: number;
-        }[];
-        total: number;
-    }[]
+    data: Summary[]
 }>()
 
 const emits = defineEmits<(event: 'check', i: number) => void>()
 
 onMounted(() => {
+    console.log(props.data)
     let chart = echarts.init(
         document.getElementById("mixed_line_bar") as HTMLElement
     );
@@ -85,8 +77,8 @@ onMounted(() => {
         ],
         series: series
     };
-    chart.setOption(option)
-    chart.on('click', function (params) {
+    chart.setOption(option as any)
+    chart.on('click', function (params: any) {
         emits('check', params.dataIndex)
         console.log('click in mixed');
         

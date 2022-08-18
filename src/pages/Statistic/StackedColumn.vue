@@ -1,19 +1,20 @@
 <template>
-    <div id="stacked_column" style="width: 100%; height: 100%"></div>
+    <div ref="chartContainer" style="width: 100%; height: 100%"></div>
 </template>
 
 <script setup lang="ts">
 import * as echarts from "echarts";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 const props = defineProps<{
-    data: { category: string; succeed: number; total: number; succeedRate: number }[];
+    data: { category: string; success: number; total: number; successRate: number }[];
 }>();
 
+const chartContainer = ref()
 
 onMounted(() => {
-    console.log(props);
+    console.log(props); 
     let chart = echarts.init(
-        document.getElementById("stacked_column") as HTMLElement
+        chartContainer.value, 
     );
     let option = {
         tooltip: {
@@ -54,7 +55,7 @@ onMounted(() => {
                 emphasis: {
                     focus: "series",
                 },
-                data: props.data.map((d) => d.succeed),
+                data: props.data.map((d) => d.success),
             },
             {
                 name: "Others",
@@ -63,11 +64,11 @@ onMounted(() => {
                 emphasis: {
                     focus: "series",
                 },
-                data: props.data.map((d) => d.total - d.succeed),
+                data: props.data.map((d) => d.total - d.success),
             },
         ],
     };
-    chart.setOption(option);
+    chart.setOption(option as any);
 });
 </script>
 
