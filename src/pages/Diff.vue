@@ -17,14 +17,14 @@ import { onBeforeMount, reactive, ref } from 'vue';
 import { fetchData } from '../utils';
 import DiffTable from './Diff/DiffTable.vue'
 
-import { diffItem } from '../types';
+import { DiffItem } from '../types';
 
 interface Option {
     value: string,
     label: string,
     children?: Option
 }
-const receiver = reactive<{ data: diffItem[], date1: string, date2: string, options: Option[] }>({
+const receiver = reactive<{ data: DiffItem[], date1: string, date2: string, options: Option[] }>({
     data: [],
     date1: '',
     date2: '',
@@ -32,12 +32,12 @@ const receiver = reactive<{ data: diffItem[], date1: string, date2: string, opti
 })
 
 onBeforeMount(async () => {
-    await fetchData('/api/getDiff', receiver)
+    await fetchData('/api/observatory-project/getDiff', receiver)
 })
 
 const timer = ref<number>(0)
 const check = async () => {
-    await fetchData('/api/getDiff', receiver, { date1: receiver.date1, date2: receiver.date2 })
+    await fetchData('/api/observatory-project/getDiff', receiver, { date1: receiver.date1, date2: receiver.date2 })
     console.log('refresh', receiver.data);
     timer.value = new Date().getTime()
 }

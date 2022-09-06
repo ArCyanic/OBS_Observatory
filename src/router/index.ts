@@ -7,19 +7,38 @@ const routes = [
     path: "/",
     name: "Home",
     component: () => DefaultLayout,
-    redirect: '/statistic',
+    redirect: '/observatory-projects',
     children: [
       {
-        path: "/statistic", 
-        name: "Statistic",
-        component: () => import('@/pages/Statistic.vue')
+        path: "/projects-observatory",
+        name: "Project Observatory",
+        redirect: '/projects-observatory/statistic',
+        children: [
+          {
+            path: "/projects-observatory/statistic", 
+            name: "Statistic",
+            component: () => import('@/pages/Statistic.vue')
+          },
+          {
+            path: '/projects-observatory/diff',
+            name: "Diffs",
+            component: () => import('@/pages/Diff.vue')
+          }
+        ],
       },
       {
-        path: '/diff',
-        name: "Diffs",
-        component: () => import('@/pages/Diff.vue')
+        path: '/packages-observatory',
+        name: 'Package Observatory',
+        redirect: '/packages-observatory/search',
+        children: [
+          {
+            path: '/packages-observatory/search',
+            name: "Search",
+            component: () => import('@/pages/Search.vue')
+          }
+        ]
       }
-    ],
+    ]
   },
 ];
 

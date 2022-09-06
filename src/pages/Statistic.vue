@@ -58,8 +58,8 @@ const receiverTable = reactive({ data: [{}] })
 const receiverTrend = reactive<{ data: Summary[] }>({ data: [] })
 
 onBeforeMount(async () => {
-    await fetchData('/api/getProjectStatistics', receiverTable)
-    await fetchData('/api/getTrend', receiverTrend)
+    await fetchData('/api/observatory-project/getProjectStatistics', receiverTable)
+    await fetchData('/api/observatory-project/getTrend', receiverTrend)
     
     // receiverTrend.data.sort((a, b) => a.date > b.date ? 1 : -1)
     // console.log('sorted');
