@@ -1,8 +1,8 @@
 <template>
     <el-menu default-active="1" :collapse="isCollapsed" :router="true" background-color="#123456" text-color="#cccccc">
-        <el-menu-item class="flex-center" style="background-color: #224466">
-            <span v-if="!isCollapsed" @click="update">BRAND</span>
-            <el-icon v-if="isCollapsed">
+        <el-menu-item class="flex-center" style="background-color: #224466" index="">
+            <span v-if="!isCollapsed" @click="update">Tarsier-OERV</span>
+            <el-icon v-if="isCollapsed" @click="updateAll">
                 <Platform />
             </el-icon>
         </el-menu-item>
@@ -34,15 +34,43 @@ import { storeToRefs } from "pinia";
 import { useStore } from "../store";
 import axios from "axios";
 
+import { h } from 'vue'
+import { ElMessage } from 'element-plus'
+
 const store = useStore();
 const { isCollapsed } = storeToRefs(store) // needed to transform into reactive variable
 
 const update = async () => {
-    const response = await axios({
+    let response = await axios({
         method: 'get',
-        url: '/api/update/',
+        url: '/api/update/updateLocal',
     });
     console.log(response.data);
+    ElMessage({
+        message: 'Data updated, please refresh web.',
+        type: 'success',
+  })
+}
+
+const updateAll = async () => {
+    let response = await axios({
+        method: 'get',
+        url: '/api/update/updateRepository',
+    });
+    ElMessage({
+        message: 'Start update data, this may take a few minutes.',
+  })
+    response = await axios({
+        method: 'get',
+        url: '/api/update/updateLocal',
+    });
+    console.log(response.data);
+    ElMessage({
+        message: 'Data updated, please refresh web.',
+        type: 'success',
+        showClose: true,
+        duration: 0
+  })
 }
 </script>
 

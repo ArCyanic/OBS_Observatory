@@ -3,3 +3,4 @@ node_modules/
 /dist/
 test.ipynb
 .vscode
+vite.config.ts

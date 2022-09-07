@@ -7,7 +7,7 @@ const routes = [
     path: "/",
     name: "Home",
     component: () => DefaultLayout,
-    redirect: '/observatory-projects',
+    redirect: '/projects-observatory',
     children: [
       {
         path: "/projects-observatory",
