@@ -24,7 +24,8 @@ export default defineConfig({
     proxy: {
       cors: "true",
       "/api": {
-        target: "http://1.15.121.222:8080", //API Server
+        target: "http://1.15.121.222:8080", //API服务器的地址
+        // target: "http://127.0.0.1:5000/",
         ws: true, 
         changeOrigin: true, 
         rewrite: (path) => path.replace(/^\/api/, ""),

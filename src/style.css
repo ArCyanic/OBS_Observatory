@@ -48,3 +48,13 @@ body,
 .el-card {
   margin: 20px
 }
+
+.compare-picker {
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+
+.compare-picker > * {
+  margin: 0 10px 0 10px;
+}

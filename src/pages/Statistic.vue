@@ -49,7 +49,7 @@ import Table from '@/components/ChartTable.vue'
 import StackedColumn from './Statistic/StackedColumn.vue';
 import MixedLineBar from './Statistic/MixedLineBar.vue';
 
-import { Summary } from '../types';
+import { Summary } from './Diff/types';
 import { fetchData } from '../utils';
 
 const radio = ref('None') // Table | Stack
@@ -58,8 +58,8 @@ const receiverTable = reactive({ data: [{}] })
 const receiverTrend = reactive<{ data: Summary[] }>({ data: [] })
 
 onBeforeMount(async () => {
-    await fetchData('/api/observatory-project/getProjectStatistics', receiverTable)
-    await fetchData('/api/observatory-project/getTrend', receiverTrend)
+    await fetchData('/api/observatory-projects/getProjectStatistics', receiverTable)
+    await fetchData('/api/observatory-projects/getTrend', receiverTrend)
     
     radio.value = 'Stack'
     index.value = receiverTrend.data.length - 1

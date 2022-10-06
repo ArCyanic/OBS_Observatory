@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import * as echarts from "echarts";
 import { onMounted } from "vue";
-import { Summary } from "../../types";
+import { Summary } from "../Diff/types";
 
 const props = defineProps<{
     data: Summary[]

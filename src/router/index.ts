@@ -35,6 +35,11 @@ const routes = [
             path: '/packages-observatory/search',
             name: "Search",
             component: () => import('@/pages/Search.vue')
+          },
+          {
+            path: '/packages-observatory/diff-packages',
+            name: 'Diff-packages',
+            component: () => import('@/pages/DiffPackages.vue')
           }
         ]
       }

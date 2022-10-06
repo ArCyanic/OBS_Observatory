@@ -24,6 +24,7 @@
                 
             </template>
             <el-menu-item index="/packages-observatory/search">Search</el-menu-item>
+            <el-menu-item index="/packages-observatory/diff-packages">Diff</el-menu-item>
         </el-sub-menu>
 
     </el-menu>
