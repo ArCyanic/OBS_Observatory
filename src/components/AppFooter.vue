@@ -1,5 +1,5 @@
 <template>
-      <span target="_blank">Powered by </span>
+      <span target="_blank">Powered by Tarsier-OERV</span>
 </template>
 
 <script setup lang="ts">

@@ -1,7 +1,10 @@
 # OBS观测平台
 本平台主要用于观测[OBS平台](https://build.tarsier-infra.com/project)上的数据，主要功能包括统计数据观测、差异对比、包搜索等。
 
+- [截图及用法](https://github.com/ArCyanic/Internship/blob/main/snapshots/OBS%E5%B7%A5%E7%A8%8B%E8%A7%82%E6%B5%8B%E5%B9%B3%E5%8F%B0.md)
+
 # 技术栈
+- vue3
 - ElementPlus
 - vue-router
 - pinia
@@ -11,6 +14,8 @@
 # Use
 
 运行需要环境中安装Node，建议版本17+。
+
+在部署完后端后，修改vite.config.ts中的服务器地址。
 
 将仓库克隆到本地，执行：
 
@@ -31,7 +36,7 @@
 ├── components //布局子组件
 │   ├── AppFooter.vue
 │   ├── AppHeader.vue
-│   ├── AppSidebar.vue
+│   ├── AppSidebar.vue！侧边栏组件
 │   └── ChartTable.vue //通用表格组件，暂未用到
 ├── layouts //布局文件夹
 │   └── DefaultLayout.vue
@@ -57,7 +62,7 @@
 ├── store //全局状态管理
 │   └── index.ts
 ├── style.css //全局style
-├── utils.ts //工具性函数
+├── utils.ts //工具型函数
 └── vite-env.d.ts
 ```
 
