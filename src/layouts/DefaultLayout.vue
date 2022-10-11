@@ -1,6 +1,5 @@
 <template>
     <el-container style="height: 100%" >
-        <!-- <el-aside> -->
         <el-aside :width="isCollapsed ? '5%' : '14%'">
             <AppSidebar />
         </el-aside>
